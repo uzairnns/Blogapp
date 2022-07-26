@@ -1,17 +1,16 @@
 # frozen_string_literal: true
 
 class LikingsController < ApplicationController
-  def create
-    @like = current_user.likings.new(like_params)
 
-    unless @like.save
-      # save
-      flash[:notice] = @like.errors.full_messages.to_sentence
+  respond_to :js, :html, :json
+  def create
+    @like = current_user.likings.create(comment_id: params[:comment_id])
+    respond_to do |format|
+        format.html { redirect_to Comment.find(params[:comment_id]).post }
+        format.json { render :show, status: :ok, location: @like.comments.post }
     end
 
-    redirect_to @like.comment.post
   end
-
   def destroy
     @like = current_user.likings.find_by(id: params[:id])
     @like.destroy

@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   scope module: 'users' do
     resources :posts do
       member do
-        put 'like' => 'posts#like'
-      end
+        put "like"
+        put "dislike"
+    end
       collection do
         get :my_post
         get :my_suggestion

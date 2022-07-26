@@ -2,8 +2,8 @@
   <article class="media">
     <div class="media-content">
       <div class="content">
-
-        <strong><%= User.find(comment.user.id).name%>:</strong>
+          <%byebug%>
+        <strong><%= User.find(comment.user_id).name%>:</strong>
         <% if comment.cover_picture.attached?%>
           <%= image_tag(comment.cover_picture) %>
         <%end%>
@@ -22,9 +22,10 @@
           <div >
             <% liking = current_user.likings.find_by(comment: comment) %>
             <%if liking.nil?%>
-            <%= button_to "like", likings_path, params: {liking: { comment_id: comment.id}}, method: :post %>
+              <%= button_to "Like", likings_path(comment_id: comment.id), class: 'vote', method: :post, remote: true, data: { toggle_text: 'Dislike', toggle_href: likings_path(comment), id: comment.id } %>
             <% else %>
-            <%= button_to "unlike", liking_path(liking), method: :delete %>
+              <%= button_to "Dislike", liking_path(liking), class: 'vote', method: :delete, remote: true, data: { toggle_text: 'Like', toggle_href: likings_path(comment), id: comment.id } %>
+
             <% end %>
           </div>
           <div>

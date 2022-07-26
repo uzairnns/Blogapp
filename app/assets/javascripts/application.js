@@ -26,3 +26,4 @@ document.querySelectorAll('.comment-form-display').forEach((el)=>{
     el.nextElementSibling.style ='display: block;'
   })
   })
+
