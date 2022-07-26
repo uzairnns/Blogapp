@@ -63,21 +63,19 @@ module Users
       @content = Post.find(params[:id])
       @content.liked_by current_user
       respond_to do |format|
-        format.html { redirect_to @content}
+        format.html { redirect_to @content }
         format.json { render :show, status: :ok, location: @content }
       end
     end
 
-
     def dislike
-        @content = Post.find(params[:id])
-        @content.disliked_by current_user
-        respond_to do |format|
-          format.html { redirect_to @content}
-          format.json { render :show, status: :ok, location: @content }
-        end
+      @content = Post.find(params[:id])
+      @content.disliked_by current_user
+      respond_to do |format|
+        format.html { redirect_to @content }
+        format.json { render :show, status: :ok, location: @content }
+      end
     end
-
 
     private
 

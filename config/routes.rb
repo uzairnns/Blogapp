@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: redirect('/posts', status: 302)
@@ -6,9 +8,9 @@ Rails.application.routes.draw do
   scope module: 'users' do
     resources :posts do
       member do
-        put "like"
-        put "dislike"
-    end
+        put 'like'
+        put 'dislike'
+      end
       collection do
         get :my_post
         get :my_suggestion
