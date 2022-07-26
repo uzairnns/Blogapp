@@ -1,0 +1,24 @@
+<h4 class='d-flex justify-content-between mb-4'>
+  <span>Pending Posts</span>
+</h4>
+<p id="notice"><%= notice %></p>
+
+<% @pending.each do |post|%>
+  <%= link_to post do%>
+    <div class='card mb-4' >
+      <div class='card-body'>
+        <h5 class='card-title'><%=post.title%></h5>
+        <p><%=post.description%></p>
+        <%end%>
+          <% if current_user.moderator?%>
+            <%= link_to 'approve', edit_pending_path(post), class: 'btn btn-primary' %>
+          <% end %>
+      </div>
+    </div>
+<%end%>
+
+
+<%= link_to 'back', posts_url%>
+<br>
+
+

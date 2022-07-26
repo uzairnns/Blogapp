@@ -1,0 +1,6 @@
+
+<%= form_tag({:controller=>"/replies", :action=>"create"}, method: :post) do %>
+  <%= text_field_tag :body %>
+  <%= hidden_field_tag :suggestion_id, suggestion_id%>
+  <%= submit_tag 'reply', name: nil %>
+<% end %>
