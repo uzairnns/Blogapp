@@ -2,6 +2,7 @@
   "name": "testproject",
   "private": true,
   "dependencies": {
-    "rails-ujs": "^5.2.8-1"
+    "rails-ujs": "^5.2.8-1",
+    "uglify-js": "^3.16.3"
   }
 }
