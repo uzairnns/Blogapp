@@ -13,41 +13,41 @@ class ReportsController < UsersController
     type = params[:type]
     if type == 'Post'
       # method calling for Post reporting
-      postcreate
+      post_create
     end
     return unless type == 'Comment'
 
     # method calling for Comment reporting
-    commentcreate
+    comment_create
   end
 
   def destroy
     type = params[:type]
     if type == 'Post'
       # method callback for post unreporting
-      postdelete
+      post_delete
     end
     return unless type == 'Comment'
 
     # method callback for comment unreporting
-    commentdelete
+    comment_delete
   end
 
-  def commentdelete
+  def comment_delete
     @report = Report.find(params[:report_id])
     @report.destroy
     comment = Comment.find(params[:comment_id])
     redirect_to comment.post
   end
 
-  def postdelete
+  def post_delete
     @report = Report.find(params[:report_id])
     @report.destroy
     post = Post.find(params[:id])
     redirect_to post
   end
 
-  def commentcreate
+  def comment_create
     comment = Comment.find(params[:comment_id])
     report = comment.reports.create(user_id: current_user.id)
     unless report.save
@@ -57,7 +57,7 @@ class ReportsController < UsersController
     redirect_to comment.post
   end
 
-  def postcreate
+  def post_create
     @post = Post.find(params[:post_id])
     @report = @post.reports.create(user_id: current_user.id)
 

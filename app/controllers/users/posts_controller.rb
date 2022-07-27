@@ -6,7 +6,6 @@ module Users
     respond_to :js, :html, :json
 
     def index
-      # @posts = current_user.posts.where(published: 'true')
       @posts = Post.where(published: 'true')
       authorize @posts
     end
@@ -32,31 +31,24 @@ module Users
 
     def create
       @post = current_user.posts.build(post_params)
-
-      respond_to do |format|
-        if @post.save
-          format.html { redirect_to post_url(@post), notice: 'Post was successfully created.' }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-        end
+      if @post.save
+        redirect_to post_url(@post), notice: 'Post was successfully created.'
+      else
+        render :new, status: :unprocessable_entity
       end
     end
 
     def update
-      respond_to do |format|
-        if @post.update(post_params)
-          format.html { redirect_to post_url(@post), notice: 'Post was successfully updated.' }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-        end
+      if @post.update(post_params)
+        redirect_to post_url(@post), notice: 'Post was successfully updated.'
+      else
+        render :edit, status: :unprocessable_entity
       end
     end
 
     def destroy
       Post.find(params[:id]).destroy
-      respond_to do |format|
-        format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      end
+      redirect_to posts_url, notice: 'Post was successfully destroyed.'
     end
 
     def like

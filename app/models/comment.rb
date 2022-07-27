@@ -8,4 +8,9 @@ class Comment < ApplicationRecord
   has_many :likings, dependent: :destroy
   has_many :reports, as: :reportable, dependent: :destroy
   has_one_attached :cover_picture
+  validates :comment, presence: true, if: :check_picture
+
+  def check_picture
+    cover_picture.attached? == false
+  end
 end

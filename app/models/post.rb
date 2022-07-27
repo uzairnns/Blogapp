@@ -7,4 +7,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :suggestions, dependent: :destroy
   has_many :reports, as: :reportable, dependent: :destroy
+
+  validates :title, presence: true
+  validates :description, presence: true
 end

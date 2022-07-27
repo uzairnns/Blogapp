@@ -17,20 +17,16 @@ module Users
 
     def destroy
       @comment.destroy
-      respond_to do |format|
-        format.html { redirect_to @post, notice: 'Comment was successfully destroyed.' }
-      end
+      redirect_to @post, notice: 'Comment was successfully destroyed.'
     end
 
     def create
       @comment = @post.comments.build(comment_params)
       @comment.user = current_user
-      respond_to do |format|
-        if @comment.save
-          format.html { redirect_to @post, notice: 'post was successfully commented.' }
-        else
-          format.html { redirect_to @post, alert: 'post not commented' }
-        end
+      if @comment.save
+        redirect_to @post, notice: 'post was successfully commented.'
+      else
+        redirect_to @post, alert: 'post not commented'
       end
     end
 

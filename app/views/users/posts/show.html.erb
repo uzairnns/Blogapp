@@ -25,74 +25,73 @@
   <%= @post.user.name %>
 </p>
 
-
 <% if @post.published? %>
-<div class="d-flex">
-  <div class="row">
-    <span class='parent-likes'>
-    <span class='like_count' <%=@post.id%>>
-      <%=@post.get_likes.size%> &#128077
-    </span>
-  </div>
-      <% if user_signed_in? %>
- <% if current_user.liked? @post %>
-
-<%= button_to "Dislike", dislike_post_path(@post), class: 'vote', method: :put, remote: true, data: { toggle_text: 'Like', toggle_href: like_post_path(@post), id: @post.id } %>
-<% else %>
-  <%= button_to "Like", like_post_path(@post), class: 'vote', method: :put, remote: true, data: { toggle_text: 'Dislike', toggle_href: dislike_post_path(@post), id: @post.id } %>
-
-<% end %>
-<% end %>
-
-<br>
-
-  </span>
-
-
-    <% report = Report.find_by(reportable_type: "Post", reportable_id:@post.id, user_id:current_user.id)%>
-    <%if report.nil?%>
-      <%= button_to "Report", reports_path(post_id: @post.id, type: "Post"), method: :post, class: 'btn btn-secondary', style: 'display:inline-block' %>
-    <% else %>
-      <%= button_to "Reported", report_path(report_id: report, type:"Post"), method: :delete, class: 'btn btn-primary' %>|
-    <% end %>
-
-    <% if current_user.id == @post.user.id%>
-      <%= button_to 'Destroy', @posts,
-                method: :delete,
-                data: { confirm: 'Are you sure?' }, class:'btn btn-primary', style: 'text-decoration : none' %>|
-      <span>
-      <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' %>|
-    <%end%>
-
-    <a href="#" class="comment-form-display btn btn-primary">Suggest</a>
-
-    <div class="sub-comment-form">
-      <%= render 'users/suggestions/form', locals: {post: @post, user_id: current_user.id} %>
+  <div class="d-flex">
+    <div class="row">
+      <span class='parent-likes'>
+      <span class='like_count' <%=@post.id%>>
+        <%=@post.get_likes.size%> &#128077
+      </span>
     </div>
-  </div>
+    <% if user_signed_in? %>
+      <% if current_user.liked? @post %>
 
-  <div class="container">
-    <div class="comment-form">
-      <hr />
-      <div class="row">
-        <div class="col-md-6">
-          <h3 class="subtitle is-3">Leave a reply</h3>
-          <%= render partial: 'users/comments/form', locals: {post: @post, parent: nil} %>
-          <h2 class="subtitle is-5"><strong><%= @post.comments.count %></strong> Comments</h2>
-          <%= render @post.comments.where(parent_id: nil).includes(:user).order(id: :desc) %>
-        </div>
-          <div class="col-md-6">
-              <h3 class="subtitle is-3">Suggestions</h3>
-              <%= render partial: 'users/suggestions/suggestion', collection: @post.suggestions, as: 'suggestion' %>
-          </div>
+  <%= button_to "Dislike", dislike_post_path(@post), class: 'vote', method: :put, remote: true, data: { toggle_text: 'Like', toggle_href: like_post_path(@post), id: @post.id } %>
+  <% else %>
+    <%= button_to "Like", like_post_path(@post), class: 'vote', method: :put, remote: true, data: { toggle_text: 'Dislike', toggle_href: dislike_post_path(@post), id: @post.id } %>
+
+  <% end %>
+  <% end %>
+
+  <br>
+
+    </span>
+
+
+      <% report = Report.find_by(reportable_type: "Post", reportable_id:@post.id, user_id:current_user.id)%>
+      <%if report.nil?%>
+        <%= button_to "Report", reports_path(post_id: @post.id, type: "Post"), method: :post, class: 'btn btn-secondary', style: 'display:inline-block' %>
+      <% else %>
+        <%= button_to "Reported", report_path(report_id: report, type:"Post"), method: :delete, class: 'btn btn-primary' %>|
+      <% end %>
+
+      <% if current_user.id == @post.user.id%>
+        <%= button_to 'Destroy', @posts,
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' }, class:'btn btn-primary', style: 'text-decoration : none' %>|
+        <span>
+        <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' %>|
+      <%end%>
+
+      <a href="#" class="comment-form-display btn btn-primary">Suggest</a>
+
+      <div class="sub-comment-form">
+        <%= render 'users/suggestions/form', locals: {post: @post, user_id: current_user.id} %>
       </div>
     </div>
-  </div>
-<% else %>
 
-  <%if current_user.moderator?%>
-    <%= link_to 'approve', edit_pending_path(@post), class: 'btn btn-primary' %>
-  <% end %>
+    <div class="container">
+      <div class="comment-form">
+        <hr />
+        <div class="row">
+          <div class="col-md-6">
+            <h3 class="subtitle is-3">Leave a reply</h3>
+            <%= render partial: 'users/comments/form', locals: {post: @post, parent: nil} %>
+            <h2 class="subtitle is-5"><strong><%= @post.comments.count %></strong> Comments</h2>
+            <%= render @post.comments.where(parent_id: nil).includes(:user).order(id: :desc) %>
+          </div>
+            <div class="col-md-6">
+                <h3 class="subtitle is-3">Suggestions</h3>
+                <%= render partial: 'users/suggestions/suggestion', collection: @post.suggestions, as: 'suggestion' %>
+            </div>
+        </div>
+      </div>
+    </div>
+  <% else %>
+
+    <%if current_user.moderator?%>
+      <%= link_to 'approve', edit_pending_path(@post), class: 'btn btn-primary' %>
+    <% end %>
 
 <%end%>
 

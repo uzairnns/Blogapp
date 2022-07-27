@@ -36,7 +36,7 @@ module Users
       if @suggestion.save
         redirect_to @post, notice: 'post was successfully suggested.'
       else
-        redirect_to @post, alert: 'post not commented'
+        redirect_to @post, alert: 'post not suggested'
       end
     end
 

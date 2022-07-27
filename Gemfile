@@ -15,7 +15,6 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'file_validators'
 gem 'tinymce-rails'
 
-
 gem 'image_processing', '~> 1.2'
 gem 'puma', '~> 3.11'
 gem 'rails_admin'

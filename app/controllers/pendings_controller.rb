@@ -14,7 +14,7 @@ class PendingsController < UsersController
   def edit
     if current_user.moderator?
       @update = @post.update(published: 'true')
-      redirect_to 'http://localhost:3000/pendings'
+      redirect_to pendings_url
     else
       redirect_to posts_path, alert: 'not authorized'
     end
