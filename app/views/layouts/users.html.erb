@@ -6,25 +6,8 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= tinymce_assets %>
-    <script type="text/javascript" src="/assets/tinymce.js"></script>
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
- <script>
-   tinymce.init({
-     selector: '.tinymce',
-     height: 500,
-     menubar: false,
-     plugins: [
-       'advlist autolink lists link image charmap print preview anchor',
-       'searchreplace visualblocks code fullscreen',
-       'insertdatetime media table paste code help wordcount'
-     ],
-       toolbar: 'undo redo | formatselect | ' +
-       ' bold italic backcolor | alignleft aligncenter ' +
-       ' alignright alignjustify | bullist numlist outdent indent | ' +
-       ' removeformat | help'
-   });
- </script>
+    <%#= javascript_include_tag 'application'%>
+
   </head>
 
   <body class='bg-light'>
@@ -37,10 +20,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <%= link_to 'My Posts', my_post_posts_url, class:'nav-item nav-link'%>
+                <%= link_to 'My Posts', current_user_posts_posts_url, class:'nav-item nav-link'%>
               </li>
               <li class="nav-item">
-                <%= link_to 'Suggested', my_suggestion_posts_url, class:'nav-item nav-link'%>
+                <%= link_to 'Suggested', current_user_suggested_posts_posts_url, class:'nav-item nav-link'%>
               </li>
               <%if current_user.moderator?%>
                 <li class="nav-item">
@@ -61,13 +44,11 @@
       </nav>
 
       <div class="container">
+        <%= tinymce_assets %>
         <%= yield %>
       </div>
   </body>
 </html>
-
-
-
 <script>
 document.querySelectorAll('.comment-form-display').forEach((el)=>{
   el.addEventListener('click',(ev)=>{

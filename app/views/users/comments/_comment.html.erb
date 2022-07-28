@@ -5,7 +5,8 @@
         <strong><%= User.find(comment.user_id).name%>:</strong>
 
         <% if comment.cover_picture.attached?%>
-          <%= image_tag(comment.cover_picture) %>
+          <%= image_tag(comment.cover_picture, width: "50%", height: "200px") %>
+          <br>
         <%end%>
 
         <%= comment.comment %>
@@ -38,7 +39,7 @@
           <%if comment.user.id == current_user.id%>
             <div>
               <%= button_to 'Delete', [comment.post, comment],
-                            method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
+                            method: :delete, class: "button"%>
             </div>
           <% end %>
         </div>

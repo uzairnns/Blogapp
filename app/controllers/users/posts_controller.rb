@@ -10,11 +10,11 @@ module Users
       authorize @posts
     end
 
-    def my_post
+    def current_user_posts
       @posts = current_user.posts.all
     end
 
-    def my_suggestion
+    def current_user_suggested_posts
       @posts = Post.where(id: Suggestion.where(user_id: current_user.id).pluck(:post_id))
     end
 
@@ -30,6 +30,7 @@ module Users
     def edit; end
 
     def create
+      byebug
       @post = current_user.posts.build(post_params)
       if @post.save
         redirect_to post_url(@post), notice: 'Post was successfully created.'
@@ -54,19 +55,13 @@ module Users
     def like
       @content = Post.find(params[:id])
       @content.liked_by current_user
-      respond_to do |format|
-        format.html { redirect_to @content }
-        format.json { render :show, status: :ok, location: @content }
-      end
+      redirect_to @content
     end
 
     def dislike
       @content = Post.find(params[:id])
       @content.disliked_by current_user
-      respond_to do |format|
-        format.html { redirect_to @content }
-        format.json { render :show, status: :ok, location: @content }
-      end
+      redirect_to @content
     end
 
     private
@@ -76,7 +71,7 @@ module Users
     end
 
     def post_params
-      params.require(:post).permit(:title, :description, :content, :published, :id)
+      params.require(:post).permit(:title, :description, :content, :cover_picture, :published, :id)
     end
   end
 end

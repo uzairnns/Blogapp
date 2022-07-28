@@ -3,7 +3,7 @@
   <%= link_to 'New Post', new_post_path, class:'btn btn-primary' %>
 </h4>
 
-<p id="notice"><%= notice %></p>
+<p id="notice" class="red"><%= notice %></p>
 
 <% @posts.each do |post|%>
   <%= link_to post do%>

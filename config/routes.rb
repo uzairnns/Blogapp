@@ -15,8 +15,8 @@ Rails.application.routes.draw do
         put 'dislike'
       end
       collection do
-        get :my_post
-        get :my_suggestion
+        get :current_user_posts
+        get :current_user_suggested_posts
       end
       resources :comments, only: %i[create destroy]
       resources :suggestions

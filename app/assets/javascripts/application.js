@@ -18,25 +18,7 @@
 //= require jquery_ujs
 //= require tinymce
 
-import Rails from 'rails-ujs'
-Rails.start()
 
-document.querySelectorAll('.comment-form-display').forEach((el)=>{
-  el.addEventListener('click',(ev)=>{
-    ev.preventDefault();
-    el.nextElementSibling.style ='display: block;'
-  })
-  })
 
-  tinymce.init({
-    selector: 'textarea',  // change this value according to your HTML
-    plugins: 'image',
-    menubar: 'insert',
-    toolbar: 'image',
-    image_list: [
-      {title: 'My image 1', value: 'https://www.example.com/my1.gif'},
-      {title: 'My image 2', value: 'http://www.moxiecode.com/my2.gif'}
-    ]
-  });
 
 
