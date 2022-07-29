@@ -2,27 +2,28 @@
 
 module Users
   class SuggestionsController < UsersController
-    before_action :set_post, only: %i[edit update destroy create]
+    before_action :set_post, only: %i[edit destroy create]
     before_action :set_comment, only: %i[destroy]
     before_action :authenticate_user!, only: %i[create destroy]
-    before_action :current_user, only: %i[create destroy edit]
+    before_action :current_user, only: %i[create destroy]
 
     def index
       @suggestions = Suggestion.all
     end
 
-    def edit; end
+    def edit
+
+      @body = Suggestion.find(params[:id]).body
+      @post.update(description: @body)
+      redirect_to @post
+    end
 
     def new
       @suggestion = Suggestion.new
     end
 
     def update
-      if @suggestion.update(suggestion_params)
-        redirect_to @post, notice: 'Post was successfully Suggested.'
-      else
-        render :edit
-      end
+      buebug
     end
 
     def destroy
@@ -47,11 +48,13 @@ module Users
     end
 
     def set_post
-      @post = Post.find(params[:post_id])
+      @post = Post.find_by(id: params[:post_id])
+      file_not_found if @post.nil?
     end
 
     def set_comment
-      @suggestion = @post.suggestions.find(params[:id])
+      @suggestion = @post.suggestions.find_by(id: params[:id])
+      file_not_found if @suggestion.nil?
     end
   end
 end

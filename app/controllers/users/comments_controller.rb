@@ -37,11 +37,15 @@ module Users
     end
 
     def set_post
-      @post = Post.find(params[:post_id])
+      @post = Post.find_by(id: params[:post_id])
+      file_not_found if @post.nil?
     end
 
     def set_comment
-      @comment = @post.comments.find(params[:id])
+      @comment = @post.comments.find_by(id: params[:id])
+      file_not_found if @comment.nil?
     end
+
+
   end
 end

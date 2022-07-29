@@ -34,22 +34,38 @@ class ReportsController < UsersController
   end
 
   def comment_delete
-    @report = Report.find(params[:report_id])
-    @report.destroy
+    @report = Report.find_by(id: params[:report_id])
+    if @report.nil?
+      file_not_found
+    else
+      @report.destroy
+    end
     comment = Comment.find(params[:comment_id])
     redirect_to comment.post
   end
 
   def post_delete
-    @report = Report.find(params[:report_id])
-    @report.destroy
-    post = Post.find(params[:id])
-    redirect_to post
+    @report = Report.find_by(id: params[:report_id])
+    if @report.nil?
+      file_not_found
+    else
+      @report.destroy
+    end
+    post = Post.find_by(id: params[:id])
+    if post.nil?
+      file_not_found
+    else
+      redirect_to post
+    end
   end
 
   def comment_create
-    comment = Comment.find(params[:comment_id])
-    report = comment.reports.create(user_id: current_user.id)
+    comment = Comment.find_by(id: params[:comment_id])
+    if comment.nil?
+      file_not_found
+    else
+      report = comment.reports.create(user_id: current_user.id)
+    end
     unless report.save
       # comment report saving
       flash[:notice] = report.errors.full_messages.to_sentence

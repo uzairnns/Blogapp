@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%#= javascript_include_tag 'application'%>
+    <%=%>
 
   </head>
 
@@ -49,12 +50,4 @@
       </div>
   </body>
 </html>
-<script>
-document.querySelectorAll('.comment-form-display').forEach((el)=>{
-  el.addEventListener('click',(ev)=>{
-    ev.preventDefault();
-    el.nextElementSibling.style ='display: block;'
-  })
-  })
 
-</script>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_27_075625) do
+ActiveRecord::Schema.define(version: 2022_07_28_153034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2022_07_27_075625) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "parent_id"
+    t.index ["comment"], name: "index_comments_on_comment"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -78,8 +79,6 @@ ActiveRecord::Schema.define(version: 2022_07_27_075625) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
     t.boolean "published"
     t.string "published_at"
     t.string "datetime"
@@ -93,16 +92,19 @@ ActiveRecord::Schema.define(version: 2022_07_27_075625) do
     t.integer "cached_weighted_score", default: 0
     t.integer "cached_weighted_total", default: 0
     t.integer "cached_weighted_average", default: 0
-    t.text "content"
+    t.text "content", null: false
+    t.string "title", null: false
+    t.text "description", null: false
+    t.index ["title"], name: "index_posts_on_title"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "replies", force: :cascade do |t|
-    t.text "body"
     t.bigint "suggestion_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "body", null: false
     t.index ["suggestion_id"], name: "index_replies_on_suggestion_id"
     t.index ["user_id"], name: "index_replies_on_user_id"
   end
@@ -118,11 +120,12 @@ ActiveRecord::Schema.define(version: 2022_07_27_075625) do
   end
 
   create_table "suggestions", force: :cascade do |t|
-    t.text "body"
     t.bigint "post_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "body", null: false
+    t.index ["body"], name: "index_suggestions_on_body"
     t.index ["post_id"], name: "index_suggestions_on_post_id"
     t.index ["user_id"], name: "index_suggestions_on_user_id"
   end
@@ -142,10 +145,11 @@ ActiveRecord::Schema.define(version: 2022_07_27_075625) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.boolean "moderator"
     t.boolean "admin"
+    t.string "name", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
