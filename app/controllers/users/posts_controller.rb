@@ -24,12 +24,19 @@ module Users
     def show
       @post = Post.find_by(id: params[:id])
       file_not_found if @post.nil?
+      if @post.published? == false
+        if current_user.id != @post.user_id && !current_user.moderator?
+          flash[:alert] = 'you are not authorized to perform this action'
+          redirect_to(request.referer || root_path)
+        end
+      end
     end
 
     def edit; end
 
     def create
       @post = current_user.posts.build(post_params)
+
       if @post.save
         redirect_to post_url(@post), notice: 'Post was successfully created.'
       else

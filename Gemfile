@@ -8,6 +8,7 @@ ruby '2.7.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'acts_as_votable'
 gem 'bootstrap', '~> 5.1.3'
+gem 'cloudinary'
 gem 'rails', '~> 5.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
