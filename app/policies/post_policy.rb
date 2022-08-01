@@ -11,4 +11,8 @@ class PostPolicy < ApplicationPolicy
   def index?
     true
   end
+
+  def show
+    user_has_any_role
+  end
 end

@@ -64,11 +64,7 @@ class ReportsController < UsersController
     if comment.nil?
       file_not_found
     else
-      report = comment.reports.create(user_id: current_user.id)
-    end
-    unless report.save
-      # comment report saving
-      flash[:notice] = report.errors.full_messages.to_sentence
+      comment.reports.create(user_id: current_user.id)
     end
     redirect_to comment.post
   end

@@ -43,19 +43,14 @@
     </div>
     <% if user_signed_in? %>
       <% if current_user.liked? @post %>
-
-  <%= button_to "Dislike", dislike_post_path(@post), class: 'vote', method: :put, remote: true, data: { toggle_text: 'Like', toggle_href: like_post_path(@post), id: @post.id } %>
-  <% else %>
-    <%= button_to "Like", like_post_path(@post), class: 'vote', method: :put, remote: true, data: { toggle_text: 'Dislike', toggle_href: dislike_post_path(@post), id: @post.id } %>
-
-  <% end %>
-  <% end %>
-
-  <br>
+        <%= button_to "Dislike", dislike_post_path(@post), class: 'vote', method: :put, remote: true, data: { toggle_text: 'Like', toggle_href: like_post_path(@post), id: @post.id } %>
+      <% else %>
+        <%= button_to "Like", like_post_path(@post), class: 'vote', method: :put, remote: true, data: { toggle_text: 'Dislike', toggle_href: dislike_post_path(@post), id: @post.id } %>
+      <% end %>
+    <% end %>
+    <br>
 
     </span>
-
-
       <% report = Report.find_by(reportable_type: "Post", reportable_id:@post.id, user_id:current_user.id)%>
       <%if report.nil?%>
         <%= button_to "Report", reports_path(post_id: @post.id, type: "Post"), method: :post, class: 'btn btn-secondary', style: 'display:inline-block' %>
@@ -88,19 +83,17 @@
             <h2 class="subtitle is-5"><strong><%= @post.comments.count %></strong> Comments</h2>
             <%= render @post.comments.where(parent_id: nil).includes(:user).order(id: :desc) %>
           </div>
-            <div class="col-md-6">
-                <h3 class="subtitle is-3">Suggestions</h3>
-                <%= render partial: 'users/suggestions/suggestion', collection: @post.suggestions, as: 'suggestion' %>
-            </div>
+          <div class="col-md-6">
+              <h3 class="subtitle is-3">Suggestions</h3>
+              <%= render partial: 'users/suggestions/suggestion', collection: @post.suggestions, as: 'suggestion' %>
+          </div>
         </div>
       </div>
     </div>
-  <% else %>
+    <% else %>
 
     <%if current_user.moderator?%>
       <%= link_to 'approve', edit_pending_path(@post), class: 'btn btn-primary' %>
     <% end %>
-
 <%end%>
-
- <%= link_to 'back', posts_url%>
+<%= link_to 'back', posts_url%>

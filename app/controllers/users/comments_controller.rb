@@ -45,7 +45,5 @@ module Users
       @comment = @post.comments.find_by(id: params[:id])
       file_not_found if @comment.nil?
     end
-
-
   end
 end

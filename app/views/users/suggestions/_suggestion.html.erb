@@ -1,32 +1,35 @@
 <%if suggestion.id != nil%>
-<div class="box">
-  <article class="media">
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong><%= suggestion&.user&.name%>:</strong>
-          <%= suggestion.body %>
-        </p>
-      </div>
-    </div>
-    <%if suggestion.user.id == current_user.id%>
-      <%= link_to 'Reject', [suggestion.post, suggestion],
-                  method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
+  <div class="box">
+    <article class="media">
 
-      <%= link_to 'Accept',edit_post_suggestion_path(suggestion.post, suggestion.id) ,
-                    class: "button is-danger" %>
-
-    <%end%>
-
-
-    <a href="#" class="comment-form-display">reply</a>
-        <div class="sub-comment-form">
-          <%= render partial: 'users/replies/form', locals: {suggestion_id: suggestion.id}%>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong><%= suggestion&.user&.name%>:</strong>
+            <%= suggestion.body %>
+          </p>
         </div>
-  </article>
-  <div class="sub-comments">
-    <%= render suggestion.replies%>
-  </div>
+      </div>
 
-</div>
+      <%if suggestion.user.id == current_user.id%>
+        <%= link_to 'Reject', [suggestion.post, suggestion],
+                    method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
+
+        <%= link_to 'Accept',edit_post_suggestion_path(suggestion.post, suggestion.id) ,
+                      class: "button is-danger" %>
+      <%end%>
+
+      <a href="#" class="comment-form-display">reply</a>
+
+      <div class="sub-comment-form">
+        <%= render partial: 'users/replies/form', locals: {suggestion_id: suggestion.id}%>
+      </div>
+
+    </article>
+
+    <div class="sub-comments">
+      <%= render suggestion.replies%>
+    </div>
+
+  </div>
 <% end %>

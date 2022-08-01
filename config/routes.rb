@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get 'home/index'
   root 'home#index'
   scope module: 'users' do
-
     resources :posts do
       member do
         put 'like'

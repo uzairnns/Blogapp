@@ -12,7 +12,6 @@ module Users
     end
 
     def edit
-
       @body = Suggestion.find(params[:id]).body
       @post.update(description: @body)
       redirect_to @post
