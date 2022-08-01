@@ -15,4 +15,8 @@ class PostPolicy < ApplicationPolicy
   def show
     user_has_any_role
   end
+
+  def update?
+    user.admin? or !post.published?
+  end
 end
