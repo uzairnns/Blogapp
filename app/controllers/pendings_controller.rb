@@ -24,6 +24,6 @@ class PendingsController < UsersController
 
   def set_post
     @post = Post.find_by(id: params[:id])
-    file_not_found if @post.nil?
+    file_not_found unless @post
   end
 end

@@ -21,10 +21,6 @@ module Users
       @suggestion = Suggestion.new
     end
 
-    def update
-      buebug
-    end
-
     def destroy
       @suggestion.destroy
       redirect_to @post, notice: 'Suggestion was successfully destroyed.'
@@ -48,12 +44,12 @@ module Users
 
     def set_post
       @post = Post.find_by(id: params[:post_id])
-      file_not_found if @post.nil?
+      file_not_found unless @post
     end
 
     def set_comment
       @suggestion = @post.suggestions.find_by(id: params[:id])
-      file_not_found if @suggestion.nil?
+      file_not_found unless @suggestion
     end
   end
 end

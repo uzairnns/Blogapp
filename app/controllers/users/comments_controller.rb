@@ -16,8 +16,11 @@ module Users
     end
 
     def destroy
-      @comment.destroy
-      redirect_to @post, notice: 'Comment was successfully destroyed.'
+      if @comment.destroy
+        redirect_to @post, notice: 'Comment was successfully destroyed.'
+      else
+        file_not_found
+      end
     end
 
     def create
