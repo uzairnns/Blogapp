@@ -18,7 +18,17 @@
 //= require jquery_ujs
 //= require tinymce
 //= user.js
+window.onload = function() {
 
+  document.querySelectorAll('.comment-form-display').forEach((el)=>{
+    el.addEventListener('click',(ev)=>{
+      ev.preventDefault();
+      el.nextElementSibling.style ='display: block;'
+    })
+    })
+
+
+};
 
 
 
