@@ -13,11 +13,12 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
 //= require jquery
 //= require jquery_ujs
 //= require tinymce
 //= user.js
+//= require_tree .
+
 window.onload = function() {
 
   document.querySelectorAll('.comment-form-display').forEach((el)=>{
@@ -29,7 +30,6 @@ window.onload = function() {
 
 
 };
-alert ('ok')
 
 
 
