@@ -55,21 +55,19 @@ module Users
 
     def destroy
       @post = Post.find_by(id: params[:id])
-      if @post.nil?
-        file_not_found
-      else
-        @post.destroy
+      if @post.destroy
         redirect_to posts_url, notice: 'Post was successfully destroyed.'
+      else
+        file_not_found
       end
     end
 
     def like
       @content = Post.find_by(id: params[:id])
-      if @content.nil?
-        file_not_found
-      else
-        @content.liked_by current_user
+      if @content.liked_by current_user
         redirect_to @content
+      else
+        file_not_found
       end
     end
 

@@ -27,8 +27,6 @@ window.onload = function() {
       el.nextElementSibling.style ='display: block;'
     })
     })
-
-
 };
 
 

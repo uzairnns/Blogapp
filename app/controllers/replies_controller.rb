@@ -3,11 +3,10 @@
 class RepliesController < UsersController
   def create
     @suggestion = Suggestion.find_by(id: params[:suggestion_id])
-    if @suggestion.nil?
-      file_not_found
-    else
-      @suggestion.replies.create(user_id: current_user.id, body: params[:body])
+    if @suggestion.replies.create(user_id: current_user.id, body: params[:body])
       redirect_to @suggestion.post
+    else
+      file_not_found
     end
   end
 

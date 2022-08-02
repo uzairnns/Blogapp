@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_02_063616) do
+ActiveRecord::Schema.define(version: 2022_08_02_114033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 2022_08_02_063616) do
     t.datetime "updated_at", null: false
     t.integer "parent_id"
     t.string "body", default: "", null: false
-    t.index ["body"], name: "index_comments_on_body"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -95,7 +94,6 @@ ActiveRecord::Schema.define(version: 2022_08_02_063616) do
     t.text "content", null: false
     t.string "title", default: "", null: false
     t.text "description", default: "", null: false
-    t.index ["title"], name: "index_posts_on_title"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -125,7 +123,6 @@ ActiveRecord::Schema.define(version: 2022_08_02_063616) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "body", default: "", null: false
-    t.index ["body"], name: "index_suggestions_on_body"
     t.index ["post_id"], name: "index_suggestions_on_post_id"
     t.index ["user_id"], name: "index_suggestions_on_user_id"
   end
@@ -149,7 +146,6 @@ ActiveRecord::Schema.define(version: 2022_08_02_063616) do
     t.boolean "admin"
     t.string "name", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["name"], name: "index_users_on_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

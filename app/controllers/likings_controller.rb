@@ -9,11 +9,10 @@ class LikingsController < ApplicationController
 
   def destroy
     @like = current_user.likings.find_by(id: params[:id])
-    if @like.nil?
-      file_not_found
-    else
-      @like.destroy
+    if @like.destroy
       redirect_to @like.comment.post
+    else
+      file_not_found
     end
   end
 
