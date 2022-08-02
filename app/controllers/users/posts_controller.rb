@@ -23,8 +23,9 @@ module Users
 
     def show
       @post = Post.find_by(id: params[:id])
-      file_not_found if @post.nil?
-      if @post.published? == false
+      if @post.nil?
+        file_not_found
+      elsif @post.published? == false
         if current_user.id != @post.user_id && !current_user.moderator?
           flash[:alert] = 'you are not authorized to perform this action'
           redirect_to(request.referer || root_path)
