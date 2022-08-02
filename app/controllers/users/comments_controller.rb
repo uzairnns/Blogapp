@@ -33,7 +33,7 @@ module Users
     private
 
     def comment_params
-      params.require(:comment).permit(:name, :comment, :cover_picture, :post_id, :id, :parent_id)
+      params.require(:comment).permit(:name, :body, :cover_picture, :post_id, :id, :parent_id)
     end
 
     def set_post

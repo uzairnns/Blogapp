@@ -3,13 +3,12 @@
     <div class="media-content">
       <div class="content">
         <strong><%= User.find(comment.user_id).name%>:</strong>
-
         <% if comment.cover_picture.attached?%>
           <%= image_tag(comment.cover_picture, width: "50%", height: "200px") %>
           <br>
         <%end%>
 
-        <%= comment.comment %>
+        <%= comment.body %>
         <a href="#" class="comment-form-display">reply</a>
 
         <div class="sub-comment-form">
