@@ -40,7 +40,7 @@ module Users
       @post = current_user.posts.build(post_params)
 
       if @post.save
-        ActionCable.server.broadcast 'post',{
+        ActionCable.server.broadcast 'post', {
           post: PostsController.render(
             partial: 'post',
             locals: { post: @post }
