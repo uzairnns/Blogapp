@@ -6,18 +6,9 @@
 <p id="notice" class="red"><%= notice %></p>
 
 <% @posts.each do |post|%>
-  <%= link_to post do%>
-    <div class='card mb-4 bg-light' >
-      <div class='card-body'>
-        <h5 class='card-title text-primary rounded'><%=post.title%></h5>
-        <p><%=post.description%>
-      </div>
-      <div class="comment-count">
-        <span class="tag is-rounded"><%= post.comments.count %> comments</span>
-        <span class="tag is-rounded"><%= post.get_likes.size %> likes</span>
-      </div>
-    </div>
-  <%end%>
+  <div class='messages'>
+    <%= render post%>
+  </div>
 <%end%>
 <br>
 

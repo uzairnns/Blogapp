@@ -5,7 +5,8 @@ module Users
     respond_to :js, :html, :json
 
     def index
-      @posts = Post.where(published: 'true')
+      # @posts = Post.where(published: 'true')
+      @posts = Post.all.order(:id)
       authorize @posts
     end
 
@@ -39,6 +40,12 @@ module Users
       @post = current_user.posts.build(post_params)
 
       if @post.save
+        ActionCable.server.broadcast 'post',{
+          post: PostsController.render(
+            partial: 'post',
+            locals: { post: @post }
+          ).squish
+        }
         redirect_to post_url(@post), notice: 'Post was successfully created.'
       else
         render :new, status: :unprocessable_entity
