@@ -73,11 +73,10 @@ module Users
 
     def dislike
       @content = Post.find_by(id: params[:id])
-      if @content.nil?
-        file_not_found
-      else
-        @content.disliked_by current_user
+      if @content.disliked_by current_user
         redirect_to @content
+      else
+        file_not_found
       end
     end
 

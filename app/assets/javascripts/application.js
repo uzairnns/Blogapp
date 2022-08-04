@@ -16,7 +16,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require tinymce
-//= user.js
 //= require_tree .
 
 window.onload = function() {
