@@ -5,9 +5,8 @@ module Users
     respond_to :js, :html, :json
 
     def index
-      # @posts = Post.where(published: 'true')
       @posts = Post.all.order(:id)
-      authorize @posts
+      flash[:alert] = 'all users posts'
     end
 
     def current_user_posts
@@ -37,32 +36,26 @@ module Users
     def edit; end
 
     def create
-      @post = current_user.posts.build(post_params)
-
-      if @post.save
-        ActionCable.server.broadcast 'post', {
-          post: PostsController.render(
-            partial: 'post',
-            locals: { post: @post }
-          ).squish
-        }
-        redirect_to post_url(@post), notice: 'Post was successfully created.'
-      else
-        render :new, status: :unprocessable_entity
-      end
+      @post = current_user.posts.create(post_params)
+      ActionCable.server.broadcast 'post', {
+        post: PostsController.render(
+          partial: 'post',
+          locals: { post: @post }
+        ).squish
+      }
+      redirect_to post_url(@post), notice: 'Post was successfully created.'
     end
 
     def update
-      if @post.update(post_params)
-        redirect_to post_url(@post), notice: 'Post was successfully updated.'
-      else
-        render :edit, status: :unprocessable_entity
-      end
+      @post = Post.find_by(id: params[:id])
+      @post.update(post_params)
+      redirect_to post_url(@post), notice: 'Post was successfully updated.'
     end
 
     def destroy
       @post = Post.find_by(id: params[:id])
-      if @post.destroy
+      if !@post.nil?
+        @post.destroy
         redirect_to posts_url, notice: 'Post was successfully destroyed.'
       else
         file_not_found
@@ -71,8 +64,9 @@ module Users
 
     def like
       @content = Post.find_by(id: params[:id])
-      if @content.liked_by current_user
-        redirect_to @content
+      if !@content.nil?
+        @content.liked_by current_user
+        redirect_to @content, notice: 'Post was successfully liked.'
       else
         file_not_found
       end
@@ -80,8 +74,9 @@ module Users
 
     def dislike
       @content = Post.find_by(id: params[:id])
-      if @content.disliked_by current_user
-        redirect_to @content
+      if !@content.nil?
+        @content.disliked_by current_user
+        redirect_to @content, notice: 'Post was successfully unliked.'
       else
         file_not_found
       end

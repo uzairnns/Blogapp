@@ -2,15 +2,11 @@
 
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  # include Pundit::Authorization
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[name avatar moderator])
     devise_parameter_sanitizer.permit(:sign_in, keys: %i[name avatar])
     devise_parameter_sanitizer.permit(:account_update, keys: %i[name avatar])
   end
-  include Pundit
-
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   private
 
@@ -24,6 +20,6 @@ class ApplicationController < ActionController::Base
   end
 
   def file_not_found
-    render file: Rails.root.join('/public/404').to_s, layout: false, status: :not_found
+    render file: Rails.root.join('/public/404').to_s, layout: false, status: :not_found, notice: 'not found'
   end
 end
