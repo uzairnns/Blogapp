@@ -5,15 +5,11 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'associations' do
     it { is_expected.to have_one_attached(:avatar) }
-    it { is_expected.to have_many(:posts) }
-    it { is_expected.to have_many(:comments) }
-    it { is_expected.to have_many(:suggestions) }
-    it { is_expected.to have_many(:reports) }
-    it { is_expected.to have_many(:likings) }
-    it { is_expected.to have_many(:replies) }
-  end
-
-  describe 'validations' do
-    it { is_expected.to allow_content_types('image/png', 'image/jpeg').for(:avatar) }
+    it { is_expected.to have_many(:posts).dependent(:destroy) }
+    it { is_expected.to have_many(:comments).dependent(:destroy) }
+    it { is_expected.to have_many(:suggestions).dependent(:destroy) }
+    it { is_expected.to have_many(:reports).dependent(:destroy) }
+    it { is_expected.to have_many(:likings).dependent(:destroy) }
+    it { is_expected.to have_many(:replies).dependent(:destroy) }
   end
 end

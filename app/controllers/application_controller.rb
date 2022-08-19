@@ -10,11 +10,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def user_not_authorized
-    flash[:alert] = 'you are not authorized to perform this action'
-    redirect_to(request.referer || root_path)
-  end
-
   def after_sign_in_path_for(_resource)
     posts_url
   end

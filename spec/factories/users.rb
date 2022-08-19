@@ -7,6 +7,6 @@ FactoryBot.define do
     password { Faker::Internet.password(min_length: 6) }
 
     # avatar {File.new("#{Rails.root}/spec/files/images/default.jpeg")}
-    avatar { Rack::Test::UploadedFile.new("#{Rails.root}/spec/files/images/default.jpeg", 'image/jpeg') }
+    avatar { Rack::Test::UploadedFile.new(Rails.root.join('./spec/files/images/default.jpeg')) }
   end
 end

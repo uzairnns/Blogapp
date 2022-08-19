@@ -45,7 +45,7 @@ RSpec.describe Users::PostsController do
     it 'renders the show template for autharized user' do
       get :show, params: { id: post.id }
       expect(response).to have_http_status('200')
-      expect(flash[:alert]).to match(nil)
+      expect(response).to render_template(:show)
     end
 
     it 'renders the home template for unautharized user' do
@@ -55,7 +55,7 @@ RSpec.describe Users::PostsController do
 
     it 'show message for post not found' do
       get :show, params: { id: 1545 }
-      expect(flash[:status]).to match(nil)
+      expect(response).to render_template(file: '404.html')
     end
   end
 
@@ -64,12 +64,22 @@ RSpec.describe Users::PostsController do
       get :create, params: { post: { title: 'Sideshow', description: 'Bob', content: 'Sideshow Bob' } }
       expect(flash[:notice]).to match('Post was successfully created.')
     end
+
+    it 'create user post negative case' do
+      get :create, params: { post: { description: 'Bob', content: 'Sideshow Bob' } }
+      expect(response).to render_template(:new)
+    end
   end
 
   describe 'PATCH #update' do
     it 'update user post' do
       patch :update, params: { id: post.id, post: { title: 'Sideshow', description: 'Bob', content: 'Sideshow Bob' } }
       expect(flash[:notice]).to match('Post was successfully updated.')
+    end
+
+    it 'update user post negative case' do
+      patch :update, params: { id: -1, post: { title: 'Sideshow', description: 'Bob', content: 'Sideshow Bob' } }
+      expect(response).to render_template(file: '404.html')
     end
   end
 
@@ -79,9 +89,9 @@ RSpec.describe Users::PostsController do
       expect(flash[:notice]).to match('Post was successfully destroyed.')
     end
 
-    it 'delete user post' do
+    it 'delete user post negative case' do
       delete :destroy, params: { id: 1155 }
-      expect(flash[:notice]).to match(nil)
+      expect(response).to render_template(file: '404.html')
     end
   end
 
@@ -93,7 +103,7 @@ RSpec.describe Users::PostsController do
 
     it 'likes the  user post' do
       put :like, params: { id: -1 }
-      expect(flash[:notice]).to match(nil)
+      expect(response).to render_template(file: '404.html')
     end
   end
 
@@ -105,7 +115,7 @@ RSpec.describe Users::PostsController do
 
     it 'likes the  user post' do
       put :dislike, params: { id: -1 }
-      expect(flash[:notice]).to match(nil)
+      expect(response).to render_template(file: '404.html')
     end
   end
 end

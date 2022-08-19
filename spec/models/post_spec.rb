@@ -6,9 +6,9 @@ RSpec.describe Post, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to have_one_attached(:cover_picture) }
-    it { is_expected.to have_many(:comments) }
-    it { is_expected.to have_many(:suggestions) }
-    it { is_expected.to have_many(:reports) }
+    it { is_expected.to have_many(:comments).dependent(:destroy) }
+    it { is_expected.to have_many(:suggestions).dependent(:destroy) }
+    it { is_expected.to have_many(:reports).dependent(:destroy) }
   end
 
   describe 'validations' do

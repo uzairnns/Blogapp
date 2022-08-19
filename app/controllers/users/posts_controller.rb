@@ -36,20 +36,29 @@ module Users
     def edit; end
 
     def create
-      @post = current_user.posts.create(post_params)
-      ActionCable.server.broadcast 'post', {
-        post: PostsController.render(
-          partial: 'post',
-          locals: { post: @post }
-        ).squish
-      }
-      redirect_to post_url(@post), notice: 'Post was successfully created.'
+      @post = current_user.posts.build(post_params)
+
+      if @post.save
+        ActionCable.server.broadcast 'post', {
+          post: PostsController.render(
+            partial: 'post',
+            locals: { post: @post }
+          ).squish
+        }
+        redirect_to post_url(@post), notice: 'Post was successfully created.'
+      else
+        render :new, status: :unprocessable_entity, notice: 'Post created unsuccessfully'
+      end
     end
 
     def update
       @post = Post.find_by(id: params[:id])
-      @post.update(post_params)
-      redirect_to post_url(@post), notice: 'Post was successfully updated.'
+      if !@post.nil?
+        @post.update(post_params)
+        redirect_to post_url(@post), notice: 'Post was successfully updated.'
+      else
+        file_not_found
+      end
     end
 
     def destroy
