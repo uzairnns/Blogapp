@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-08-19T16:23:43+05:00">2022-08-19T16:23:43+05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-08-24T16:57:00+05:00">2022-08-24T16:57:00+05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  93.35%
+  93.87%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.16
+         2.09
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>451</b> relevant lines,
-    <span class="green"><b>421</b> lines covered</span> and
+    <b>489</b> relevant lines,
+    <span class="green"><b>459</b> lines covered</span> and
     <span class="red"><b>30</b> lines missed. </span>
     (<span class="green">
-  93.35%
+  93.87%
 </span>
 )
   </div>
@@ -392,22 +392,22 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#fb94c55e4166d0e031867f6f0fd916cf8a79e7df" class="src_link" title="spec/controllers/comments_controller_spec.rb">spec/controllers/comments_controller_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">45</td>
-            <td class="cell--number">29</td>
-            <td class="cell--number">29</td>
+            <td class="cell--number">57</td>
+            <td class="cell--number">41</td>
+            <td class="cell--number">41</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.24</td>
+            <td class="cell--number">1.88</td>
             
           </tr>
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#a6639acaa62110fccf80a3104e7d66ed87b5d673" class="src_link" title="spec/controllers/posts_controller_spec.rb">spec/controllers/posts_controller_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">121</td>
-            <td class="cell--number">73</td>
-            <td class="cell--number">73</td>
+            <td class="cell--number">137</td>
+            <td class="cell--number">89</td>
+            <td class="cell--number">89</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.86</td>
+            <td class="cell--number">2.53</td>
             
           </tr>
         
@@ -440,18 +440,18 @@
             <td class="cell--number">6</td>
             <td class="cell--number">6</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">27.67</td>
+            <td class="cell--number">28.33</td>
             
           </tr>
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#34b76315aba7466ff090745d507a9fb77cb426d2" class="src_link" title="spec/models/comment_spec.rb">spec/models/comment_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">31</td>
             <td class="cell--number">19</td>
-            <td class="cell--number">12</td>
-            <td class="cell--number">12</td>
+            <td class="cell--number">19</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.67</td>
+            <td class="cell--number">1.63</td>
             
           </tr>
         
@@ -513,11 +513,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#c77bfc07ac37c1eec12656c32f3123862e3e2b7b" class="src_link" title="spec/models/user_spec.rb">spec/models/user_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">15</td>
-            <td class="cell--number">10</td>
-            <td class="cell--number">10</td>
+            <td class="cell--number">21</td>
+            <td class="cell--number">13</td>
+            <td class="cell--number">13</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.70</td>
+            <td class="cell--number">1.69</td>
             
           </tr>
         
@@ -10823,8 +10823,8 @@
     
 
     <div class="t-line-summary">
-      <b>29</b> relevant lines.
-      <span class="green"><b>29</b> lines covered</span> and
+      <b>41</b> relevant lines.
+      <span class="green"><b>41</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -10985,7 +10985,7 @@
 
             
 
-            <code class="ruby">      get :create, params: { comment: { body: &#39;MyText&#39; }, post_id: post.id }</code>
+            <code class="ruby">      before_count = Comment.count</code>
           </li>
         </div>
       
@@ -10996,18 +10996,18 @@
 
             
 
-            <code class="ruby">      expect(flash[:notice]).to match(&#39;post was successfully commented.&#39;)</code>
+            <code class="ruby">      get :create, params: { comment: { body: &#39;MyText&#39; }, post_id: post.id }</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="16">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="16">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      expect(flash[:notice]).to match(&#39;post was successfully commented.&#39;)</code>
           </li>
         </div>
       
@@ -11018,18 +11018,18 @@
 
             
 
-            <code class="ruby">    it &#39;create comment on user post negative case&#39; do</code>
+            <code class="ruby">      expect(Comment.count).to eq(before_count + 1)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="18">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="18">
+            
             
 
             
 
-            <code class="ruby">      get :create, params: { comment: { body: &#39;&#39; }, post_id: post.id }</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -11040,29 +11040,29 @@
 
             
 
-            <code class="ruby">      expect(flash[:notice]).to match(&#39;post not commented&#39;)</code>
+            <code class="ruby">    it &#39;create comment on user post negative case&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="20">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="20">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      before_count = Comment.count</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="21">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="21">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">      get :create, params: { comment: { body: &#39;&#39; }, post_id: post.id }</code>
           </li>
         </div>
       
@@ -11073,7 +11073,7 @@
 
             
 
-            <code class="ruby">    it &#39;create comment on user post invalid&#39; do</code>
+            <code class="ruby">      expect(flash[:notice]).to match(&#39;post not commented&#39;)</code>
           </li>
         </div>
       
@@ -11084,34 +11084,12 @@
 
             
 
-            <code class="ruby">      get :create, params: { comment: { body: &#39;MyText&#39; }, post_id: -1 }</code>
+            <code class="ruby">      expect(Comment.count).to eq(before_count)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="24">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      expect(flash[:notice]).to match(nil)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="25">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      expect(response).to render_template(file: &#39;404.html&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="26">
+          <li class="never" data-hits="" data-linenumber="24">
             
             
 
@@ -11122,18 +11100,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="27">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="28">
+          <li class="never" data-hits="" data-linenumber="25">
             
             
 
@@ -11144,13 +11111,46 @@
         </div>
       
         <div>
+          <li class="covered" data-hits="1" data-linenumber="26">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &#39;create comment on user post invalid&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="27">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      before_count = Comment.count</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="28">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      get :create, params: { comment: { body: &#39;MyText&#39; }, post_id: -1 }</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="covered" data-hits="1" data-linenumber="29">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  describe &#39;COMMENT #destroy&#39; do</code>
+            <code class="ruby">      expect(flash[:notice]).to match(nil)</code>
           </li>
         </div>
       
@@ -11161,7 +11161,7 @@
 
             
 
-            <code class="ruby">    it &#39;destroy comment on user post&#39; do</code>
+            <code class="ruby">      expect(response).to render_template(file: &#39;404.html&#39;)</code>
           </li>
         </div>
       
@@ -11172,18 +11172,18 @@
 
             
 
-            <code class="ruby">      delete :destroy, params: { id: comment.id, post_id: post.id }</code>
+            <code class="ruby">      expect(Comment.count).to eq(before_count)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="32">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="32">
+            
             
 
             
 
-            <code class="ruby">      expect(flash[:notice]).to match(&#39;Comment was successfully destroyed.&#39;)</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -11194,7 +11194,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -11216,7 +11216,7 @@
 
             
 
-            <code class="ruby">    it &#39;create comment on user post invalid&#39; do</code>
+            <code class="ruby">  describe &#39;COMMENT #destroy&#39; do</code>
           </li>
         </div>
       
@@ -11227,7 +11227,7 @@
 
             
 
-            <code class="ruby">      delete :destroy, params: { id: comment.id, post_id: -1 }</code>
+            <code class="ruby">    it &#39;destroy comment on user post&#39; do</code>
           </li>
         </div>
       
@@ -11238,29 +11238,29 @@
 
             
 
-            <code class="ruby">      expect(flash[:notice]).to match(nil)</code>
+            <code class="ruby">      before_count = Comment.count</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="38">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="38">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      delete :destroy, params: { id: comment.id, post_id: post.id }</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="39">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="39">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">      expect(flash[:notice]).to match(&#39;Comment was successfully destroyed.&#39;)</code>
           </li>
         </div>
       
@@ -11271,34 +11271,12 @@
 
             
 
-            <code class="ruby">    it &#39;create comment on user comment invalid&#39; do</code>
+            <code class="ruby">      expect(Comment.count).to eq(before_count - 1)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="41">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      delete :destroy, params: { id: -1, post_id: post.id }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="42">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      expect(flash[:notice]).to match(nil)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="43">
+          <li class="never" data-hits="" data-linenumber="41">
             
             
 
@@ -11309,7 +11287,161 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="44">
+          <li class="never" data-hits="" data-linenumber="42">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="43">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &#39;create comment on user post invalid&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="44">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      before_count = Comment.count</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="45">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      delete :destroy, params: { id: comment.id, post_id: -1 }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="46">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(flash[:notice]).to match(nil)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="47">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(Comment.count).to eq(before_count)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="48">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="49">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="50">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &#39;create comment on user comment invalid&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="51">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      before_count = Comment.count</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="52">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      delete :destroy, params: { id: -1, post_id: post.id }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="53">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(flash[:notice]).to match(nil)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="54">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(Comment.count).to eq(before_count)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="55">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="56">
             
             
 
@@ -11320,7 +11452,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="45">
+          <li class="never" data-hits="" data-linenumber="57">
             
             
 
@@ -11349,8 +11481,8 @@
     
 
     <div class="t-line-summary">
-      <b>73</b> relevant lines.
-      <span class="green"><b>73</b> lines covered</span> and
+      <b>89</b> relevant lines.
+      <span class="green"><b>89</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -11698,7 +11830,7 @@
 
             
 
-            <code class="ruby">    it &#39;renders the index template&#39; do</code>
+            <code class="ruby">    it &#39;renders the current_user_suggested_posts template&#39; do</code>
           </li>
         </div>
       
@@ -12061,7 +12193,7 @@
 
             
 
-            <code class="ruby">      get :create, params: { post: { title: &#39;Sideshow&#39;, description: &#39;Bob&#39;, content: &#39;Sideshow Bob&#39; } }</code>
+            <code class="ruby">      before_count = Post.count</code>
           </li>
         </div>
       
@@ -12072,12 +12204,34 @@
 
             
 
+            <code class="ruby">      get :create, params: { post: { title: &#39;Sideshow&#39;, description: &#39;Bob&#39;, content: &#39;Sideshow Bob&#39; } }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="66">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">      expect(flash[:notice]).to match(&#39;Post was successfully created.&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="66">
+          <li class="covered" data-hits="1" data-linenumber="67">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(Post.count).to eq(before_count + 1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="68">
             
             
 
@@ -12088,35 +12242,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="67">
+          <li class="never" data-hits="" data-linenumber="69">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="68">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    it &#39;create user post negative case&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="69">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      get :create, params: { post: { description: &#39;Bob&#39;, content: &#39;Sideshow Bob&#39; } }</code>
           </li>
         </div>
       
@@ -12127,40 +12259,40 @@
 
             
 
+            <code class="ruby">    it &#39;create user post negative case&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="71">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      before_count = Post.count</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="72">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      get :create, params: { post: { description: &#39;Bob&#39;, content: &#39;Sideshow Bob&#39; } }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="73">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">      expect(response).to render_template(:new)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="71">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="72">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="73">
-            
-            
-
-            
-
-            <code class="ruby"></code>
           </li>
         </div>
       
@@ -12171,12 +12303,56 @@
 
             
 
+            <code class="ruby">      expect(Post.count).to eq(before_count)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="75">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="76">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="77">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="78">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">  describe &#39;PATCH #update&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="75">
+          <li class="covered" data-hits="1" data-linenumber="79">
             <span class="hits">1</span>
             
 
@@ -12187,7 +12363,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="76">
+          <li class="covered" data-hits="1" data-linenumber="80">
             <span class="hits">1</span>
             
 
@@ -12198,7 +12374,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="77">
+          <li class="covered" data-hits="1" data-linenumber="81">
             <span class="hits">1</span>
             
 
@@ -12209,57 +12385,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="78">
+          <li class="never" data-hits="" data-linenumber="82">
             
             
 
             
 
             <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="79">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="80">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    it &#39;update user post negative case&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="81">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      patch :update, params: { id: -1, post: { title: &#39;Sideshow&#39;, description: &#39;Bob&#39;, content: &#39;Sideshow Bob&#39; } }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="82">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      expect(response).to render_template(file: &#39;404.html&#39;)</code>
           </li>
         </div>
       
@@ -12270,29 +12402,29 @@
 
             
 
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="84">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="85">
-            
-            
-
-            
-
             <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="84">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &#39;update user post negative case&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="85">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      patch :update, params: { id: -1, post: { title: &#39;Sideshow&#39;, description: &#39;Bob&#39;, content: &#39;Sideshow Bob&#39; } }</code>
           </li>
         </div>
       
@@ -12303,45 +12435,12 @@
 
             
 
-            <code class="ruby">  describe &#39;DELETE #destroy&#39; do</code>
+            <code class="ruby">      expect(response).to render_template(file: &#39;404.html&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="87">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    it &#39;delete user post&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="88">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      delete :destroy, params: { id: post.id }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="89">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      expect(flash[:notice]).to match(&#39;Post was successfully destroyed.&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="90">
+          <li class="never" data-hits="" data-linenumber="87">
             
             
 
@@ -12352,7 +12451,18 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="91">
+          <li class="never" data-hits="" data-linenumber="88">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="89">
             
             
 
@@ -12363,13 +12473,35 @@
         </div>
       
         <div>
+          <li class="covered" data-hits="1" data-linenumber="90">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  describe &#39;DELETE #destroy&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="91">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &#39;delete user post&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="covered" data-hits="1" data-linenumber="92">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    it &#39;delete user post negative case&#39; do</code>
+            <code class="ruby">      before_count = Post.count</code>
           </li>
         </div>
       
@@ -12380,7 +12512,7 @@
 
             
 
-            <code class="ruby">      delete :destroy, params: { id: 1155 }</code>
+            <code class="ruby">      delete :destroy, params: { id: post.id }</code>
           </li>
         </div>
       
@@ -12391,18 +12523,18 @@
 
             
 
-            <code class="ruby">      expect(response).to render_template(file: &#39;404.html&#39;)</code>
+            <code class="ruby">      expect(flash[:notice]).to match(&#39;Post was successfully destroyed.&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="95">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="95">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      expect(Post.count).to eq(before_count - 1)</code>
           </li>
         </div>
       
@@ -12413,7 +12545,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -12435,7 +12567,7 @@
 
             
 
-            <code class="ruby">  describe &#39;LIKE #like&#39; do</code>
+            <code class="ruby">    it &#39;delete user post negative case&#39; do</code>
           </li>
         </div>
       
@@ -12446,7 +12578,7 @@
 
             
 
-            <code class="ruby">    it &#39;likes the  user post&#39; do</code>
+            <code class="ruby">      before_count = Post.count</code>
           </li>
         </div>
       
@@ -12457,7 +12589,7 @@
 
             
 
-            <code class="ruby">      put :like, params: { id: post.id }</code>
+            <code class="ruby">      delete :destroy, params: { id: 1155 }</code>
           </li>
         </div>
       
@@ -12468,18 +12600,18 @@
 
             
 
-            <code class="ruby">      expect(flash[:notice]).to match(&#39;Post was successfully liked.&#39;)</code>
+            <code class="ruby">      expect(response).to render_template(file: &#39;404.html&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="102">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="102">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      expect(Post.count).to eq(before_count)</code>
           </li>
         </div>
       
@@ -12490,56 +12622,12 @@
 
             
 
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="104">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    it &#39;likes the  user post&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="105">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      put :like, params: { id: -1 }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="106">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      expect(response).to render_template(file: &#39;404.html&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="107">
-            
-            
-
-            
-
             <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="108">
+          <li class="never" data-hits="" data-linenumber="104">
             
             
 
@@ -12550,7 +12638,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="109">
+          <li class="never" data-hits="" data-linenumber="105">
             
             
 
@@ -12561,73 +12649,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="110">
+          <li class="covered" data-hits="1" data-linenumber="106">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  describe &#39;DISLIKE #dislike&#39; do</code>
+            <code class="ruby">  describe &#39;LIKE #like&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="111">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    it &#39;Dislike the  user post&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="112">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      put :dislike, params: { id: post.id }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="113">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      expect(flash[:notice]).to match(&#39;Post was successfully unliked.&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="114">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="115">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="116">
+          <li class="covered" data-hits="1" data-linenumber="107">
             <span class="hits">1</span>
             
 
@@ -12638,13 +12671,112 @@
         </div>
       
         <div>
+          <li class="covered" data-hits="1" data-linenumber="108">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      before_count = post.get_likes.size</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="109">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      put :like, params: { id: post.id }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="110">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(flash[:notice]).to match(&#39;Post was successfully liked.&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="111">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(post.get_likes.size).to eq(before_count + 1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="112">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="113">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="114">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &#39;likes the  user post&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="115">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      before_count = post.get_likes.size</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="116">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      put :like, params: { id: -1 }</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="covered" data-hits="1" data-linenumber="117">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      put :dislike, params: { id: -1 }</code>
+            <code class="ruby">      expect(response).to render_template(file: &#39;404.html&#39;)</code>
           </li>
         </div>
       
@@ -12655,7 +12787,7 @@
 
             
 
-            <code class="ruby">      expect(response).to render_template(file: &#39;404.html&#39;)</code>
+            <code class="ruby">      expect(post.get_likes.size).to eq(before_count)</code>
           </li>
         </div>
       
@@ -12683,6 +12815,182 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="121">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="122">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  describe &#39;DISLIKE #dislike&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="123">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &#39;Dislike the  user post&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="124">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      before_count = post.get_likes.size</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="125">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      put :dislike, params: { id: post.id }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="126">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(flash[:notice]).to match(&#39;Post was successfully unliked.&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="127">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(post.get_likes.size).to eq(before_count)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="128">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="129">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="130">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &#39;likes the  user post&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="131">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      before_count = post.get_likes.size</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="132">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      put :dislike, params: { id: -1 }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="133">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(response).to render_template(file: &#39;404.html&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="134">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(post.get_likes.size).to eq(before_count)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="135">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="136">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="137">
             
             
 
@@ -13072,8 +13380,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="41" data-linenumber="5">
-            <span class="hits">41</span>
+          <li class="covered" data-hits="42" data-linenumber="5">
+            <span class="hits">42</span>
             
 
             
@@ -13083,8 +13391,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="41" data-linenumber="6">
-            <span class="hits">41</span>
+          <li class="covered" data-hits="42" data-linenumber="6">
+            <span class="hits">42</span>
             
 
             
@@ -13094,8 +13402,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="41" data-linenumber="7">
-            <span class="hits">41</span>
+          <li class="covered" data-hits="42" data-linenumber="7">
+            <span class="hits">42</span>
             
 
             
@@ -13127,8 +13435,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="41" data-linenumber="10">
-            <span class="hits">41</span>
+          <li class="covered" data-hits="42" data-linenumber="10">
+            <span class="hits">42</span>
             
 
             
@@ -13178,8 +13486,8 @@
     
 
     <div class="t-line-summary">
-      <b>12</b> relevant lines.
-      <span class="green"><b>12</b> lines covered</span> and
+      <b>19</b> relevant lines.
+      <span class="green"><b>19</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -13390,6 +13698,138 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="19">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="20">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  describe &#39;comment validation&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="21">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    context &#39;if picture not attached&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="22">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      before { allow(subject).to receive(:check_picture).and_return(true) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="23">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      it { should validate_presence_of(:body) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="24">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="25">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="26">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    context &#39;if pictre attached&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="27">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      before { allow(subject).to receive(:check_picture).and_return(false) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="28">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      it { should_not validate_presence_of(:body) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="29">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="30">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="31">
             
             
 
@@ -14354,8 +14794,8 @@
     
 
     <div class="t-line-summary">
-      <b>10</b> relevant lines.
-      <span class="green"><b>10</b> lines covered</span> and
+      <b>13</b> relevant lines.
+      <span class="green"><b>13</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -14522,6 +14962,72 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="15">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="16">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  describe &#39;#avatar&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="17">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    subject { create(:user).avatar }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="18">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="19">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    it { is_expected.to be_an_instance_of(ActiveStorage::Attached::One) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="20">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="21">
             
             
 

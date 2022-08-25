@@ -16,4 +16,16 @@ RSpec.describe Comment, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of :body }
   end
+
+  describe 'comment validation' do
+    context 'if picture not attached' do
+      before { allow(subject).to receive(:check_picture).and_return(true) }
+      it { should validate_presence_of(:body) }
+    end
+
+    context 'if pictre attached' do
+      before { allow(subject).to receive(:check_picture).and_return(false) }
+      it { should_not validate_presence_of(:body) }
+    end
+  end
 end

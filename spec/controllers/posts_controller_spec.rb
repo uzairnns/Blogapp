@@ -28,7 +28,7 @@ RSpec.describe Users::PostsController do
   end
 
   describe 'GET#current_user_suggested_posts' do
-    it 'renders the index template' do
+    it 'renders the current_user_suggested_posts template' do
       get :current_user_suggested_posts
       expect(response).to have_http_status('200')
     end
@@ -61,13 +61,17 @@ RSpec.describe Users::PostsController do
 
   describe 'POST #create' do
     it 'create user post' do
+      before_count = Post.count
       get :create, params: { post: { title: 'Sideshow', description: 'Bob', content: 'Sideshow Bob' } }
       expect(flash[:notice]).to match('Post was successfully created.')
+      expect(Post.count).to eq(before_count + 1)
     end
 
     it 'create user post negative case' do
+      before_count = Post.count
       get :create, params: { post: { description: 'Bob', content: 'Sideshow Bob' } }
       expect(response).to render_template(:new)
+      expect(Post.count).to eq(before_count)
     end
   end
 
@@ -85,37 +89,49 @@ RSpec.describe Users::PostsController do
 
   describe 'DELETE #destroy' do
     it 'delete user post' do
+      before_count = Post.count
       delete :destroy, params: { id: post.id }
       expect(flash[:notice]).to match('Post was successfully destroyed.')
+      expect(Post.count).to eq(before_count - 1)
     end
 
     it 'delete user post negative case' do
+      before_count = Post.count
       delete :destroy, params: { id: 1155 }
       expect(response).to render_template(file: '404.html')
+      expect(Post.count).to eq(before_count)
     end
   end
 
   describe 'LIKE #like' do
     it 'likes the  user post' do
+      before_count = post.get_likes.size
       put :like, params: { id: post.id }
       expect(flash[:notice]).to match('Post was successfully liked.')
+      expect(post.get_likes.size).to eq(before_count + 1)
     end
 
     it 'likes the  user post' do
+      before_count = post.get_likes.size
       put :like, params: { id: -1 }
       expect(response).to render_template(file: '404.html')
+      expect(post.get_likes.size).to eq(before_count)
     end
   end
 
   describe 'DISLIKE #dislike' do
     it 'Dislike the  user post' do
+      before_count = post.get_likes.size
       put :dislike, params: { id: post.id }
       expect(flash[:notice]).to match('Post was successfully unliked.')
+      expect(post.get_likes.size).to eq(before_count)
     end
 
     it 'likes the  user post' do
+      before_count = post.get_likes.size
       put :dislike, params: { id: -1 }
       expect(response).to render_template(file: '404.html')
+      expect(post.get_likes.size).to eq(before_count)
     end
   end
 end
