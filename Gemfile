@@ -11,6 +11,7 @@ gem 'bootstrap', '~> 5.1.3'
 gem 'cloudinary'
 gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 gem 'rails', '~> 5.2.0'
+gem 'rack-cors'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'rails-controller-testing'

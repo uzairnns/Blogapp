@@ -27,4 +27,10 @@ Rails.application.routes.draw do
   resources :likings, only: %i[create destroy]
   resources :reports, only: %i[create destroy]
   resources :replies
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :posts, only: [:index, :show]
+    end
+  end
 end
