@@ -14,6 +14,9 @@ module Api
           format.json
         end
       end
+      def destroy
+        Post.destroy(params[:id])
+      end
     end
   end
 end

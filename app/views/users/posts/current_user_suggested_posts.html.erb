@@ -4,21 +4,19 @@
 
 <p id="notice"><%= notice %></p>
 
-<% @posts.each do |post|%>
-  <%= link_to post do%>
-    <div class='card mb-4 bg-light' >
+<% @posts.each do |post| %>
+  <%= link_to post do %>
+    <div class='card mb-4 bg-light'>
       <div class='card-body'>
-        <h5 class='card-title text-primary rounded'><%=post.title%></h5>
-        <p><%=post.description%>
+        <h5 class='card-title text-primary rounded'><%= post.title %></h5>
+        <p><%= post.description %>
       </div>
       <div class="comment-count">
         <span class="tag is-rounded"><%= post.comments.count %> comments</span>
       </div>
     </div>
-  <%end%>
-<%end%>
+  <% end %>
+<% end %>
 
-<%= link_to 'back', posts_url%>
+<%= link_to 'back', posts_url %>
 <br>
-
-

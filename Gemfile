@@ -10,8 +10,8 @@ gem 'acts_as_votable'
 gem 'bootstrap', '~> 5.1.3'
 gem 'cloudinary'
 gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
-gem 'rails', '~> 5.2.0'
 gem 'rack-cors'
+gem 'rails', '~> 5.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'rails-controller-testing'
@@ -39,6 +39,8 @@ gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'erb-formatter'
+gem 'erb_lint', require: false
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 group :development, :test do

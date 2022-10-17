@@ -1,4 +1,4 @@
-
+<%# cxc %>
 <%= form_tag({:controller=>"/replies", :action=>"create"}, method: :post) do %>
   <%= text_field_tag :body,'', :required => true %>
   <%= hidden_field_tag :suggestion_id, suggestion_id%>

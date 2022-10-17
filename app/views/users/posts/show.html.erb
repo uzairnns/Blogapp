@@ -25,9 +25,9 @@
   <%= @post.user.name %>
 </p>
 <p>
-  <% if @post.cover_picture.attached?%>
+  <% if @post.cover_picture.attached? %>
     <%= image_tag(@post.cover_picture, width: "100%", height: "400px") %>
-  <%end%>
+  <% end %>
 </p>
 <p>
   <%= @post.content.html_safe %>
@@ -37,8 +37,8 @@
   <div class="d-flex">
     <div class="row">
       <span class='parent-likes'>
-      <span class='like_count' <%=@post.id%>>
-        <%=@post.get_likes.size%> &#128077
+      <span class='like_count' <%= @post.id %>>
+        <%= @post.get_likes.size %> &#128077
       </span>
     </div>
     <% if user_signed_in? %>
@@ -51,20 +51,20 @@
     <br>
 
     </span>
-      <% report = Report.find_by(reportable_type: "Post", reportable_id:@post.id, user_id:current_user.id)%>
-      <%if report.nil?%>
+      <% report = Report.find_by(reportable_type: "Post", reportable_id:@post.id, user_id:current_user.id) %>
+      <% if report.nil? %>
         <%= button_to "Report", reports_path(post_id: @post.id, type: "Post"), method: :post, class: 'btn btn-secondary', style: 'display:inline-block' %>
       <% else %>
         <%= button_to "Reported", report_path(report_id: report, type:"Post"), method: :delete, class: 'btn btn-primary' %>|
       <% end %>
 
-      <% if current_user.id == @post.user.id%>
+      <% if current_user.id == @post.user.id %>
         <%= button_to 'Destroy', @posts,
                   method: :delete,
                   class:'btn btn-primary', style: 'text-decoration : none' %>|
         <span>
         <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' %>|
-      <%end%>
+      <% end %>
 
       <a href="#" class="comment-form-display btn btn-primary">Suggest</a>
 
@@ -75,7 +75,7 @@
 
     <div class="container">
       <div class="comment-form">
-        <hr />
+        <hr>
         <div class="row">
           <div class="col-md-6">
             <h3 class="subtitle is-3">Leave a reply</h3>
@@ -92,8 +92,8 @@
     </div>
     <% else %>
 
-    <%if current_user.moderator?%>
+    <% if current_user.moderator? %>
       <%= link_to 'approve', edit_pending_path(@post), class: 'btn btn-primary' %>
     <% end %>
-<%end%>
-<%= link_to 'back', posts_url%>
+<% end %>
+<%= link_to 'back', posts_url %>
