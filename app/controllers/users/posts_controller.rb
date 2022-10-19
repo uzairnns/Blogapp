@@ -33,7 +33,9 @@ module Users
       end
     end
 
-    def edit; end
+    def edit
+      @post = Post.find_by(id: params[:id])
+    end
 
     def create
       @post = current_user.posts.build(post_params)
@@ -75,7 +77,7 @@ module Users
       @content = Post.find_by(id: params[:id])
       if !@content.nil?
         @content.liked_by current_user
-        redirect_to @content, notice: 'Post was successfully liked.'
+        redirect_to @content
       else
         file_not_found
       end
@@ -85,7 +87,7 @@ module Users
       @content = Post.find_by(id: params[:id])
       if !@content.nil?
         @content.disliked_by current_user
-        redirect_to @content, notice: 'Post was successfully unliked.'
+        redirect_to @content
       else
         file_not_found
       end

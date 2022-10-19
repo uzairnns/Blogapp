@@ -108,7 +108,6 @@ RSpec.describe Users::PostsController do
     it 'likes the  user post' do
       before_count = post.get_likes.size
       put :like, params: { id: post.id }
-      expect(flash[:notice]).to match('Post was successfully liked.')
       expect(post.get_likes.size).to eq(before_count + 1)
     end
 
@@ -124,7 +123,6 @@ RSpec.describe Users::PostsController do
     it 'Dislike the  user post' do
       before_count = post.get_likes.size
       put :dislike, params: { id: post.id }
-      expect(flash[:notice]).to match('Post was successfully unliked.')
       expect(post.get_likes.size).to eq(before_count)
     end
 

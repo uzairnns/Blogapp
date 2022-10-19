@@ -1,5 +1,5 @@
 <%# cxc %>
-<%= form_tag({:controller=>"/replies", :action=>"create"}, method: :post) do %>
+<%= form_tag({:controller=>"/replies", :action=>"create"}, method: :post, remote: true) do %>
   <%= text_field_tag :body,'', :required => true %>
   <%= hidden_field_tag :suggestion_id, suggestion_id%>
   <%= submit_tag 'reply', name: nil %>

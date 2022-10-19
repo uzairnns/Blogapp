@@ -53,14 +53,14 @@
     </span>
       <% report = Report.find_by(reportable_type: "Post", reportable_id:@post.id, user_id:current_user.id) %>
       <% if report.nil? %>
-        <%= button_to "Report", reports_path(post_id: @post.id, type: "Post"), method: :post, class: 'btn btn-secondary', style: 'display:inline-block' %>
+        <%= button_to "Report", reports_path(post_id: @post.id, type: "Post"), method: :post,remote: true, class: 'btn btn-secondary', style: 'display:inline-block' %>
       <% else %>
-        <%= button_to "Reported", report_path(report_id: report, type:"Post"), method: :delete, class: 'btn btn-primary' %>|
+        <%= button_to "Reported", report_path(report_id: report, type:"Post"), method: :delete, remote: true, class: 'btn btn-primary' %>|
       <% end %>
 
       <% if current_user.id == @post.user.id %>
         <%= button_to 'Destroy', @posts,
-                  method: :delete,
+                  method: :delete, remote: true,
                   class:'btn btn-primary', style: 'text-decoration : none' %>|
         <span>
         <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' %>|

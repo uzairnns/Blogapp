@@ -24,25 +24,25 @@
           <div>
             <% liking = current_user.likings.find_by(comment: comment) %>
             <% if liking.nil? %>
-              <%= button_to "Like", likings_path(comment_id: comment.id), class: 'vote', method: :post, remote: true, data: { toggle_text: 'Dislike', toggle_href: likings_path(comment), id: comment.id } %>
+              <%= button_to "Like", likings_path(comment_id: comment.id), class: 'vote', method: :post, remote: true %>
             <% else %>
-              <%= button_to "Dislike", liking_path(liking), class: 'vote', method: :delete, remote: true, data: { toggle_text: 'Like', toggle_href: likings_path(comment), id: comment.id } %>
+              <%= button_to "Dislike", liking_path(liking), class: 'vote', method: :delete, remote: true %>
             <% end %>
           </div>
 
           <div>
             <% report = Report.find_by(reportable_type: "Comment", reportable_id:comment.id, user_id:current_user.id) %>
             <% if report.nil? %>
-              <%= button_to "Report", reports_path(comment_id: comment.id, type: "Comment"), method: :post, style: 'display:inline-block' %>
+              <%= button_to "Report", reports_path(comment_id: comment.id, type: "Comment"), method: :post,remote: true, style: 'display:inline-block' %>
             <% else %>
-              <%= button_to "Reported", report_path(report_id: report, comment_id: comment.id, type: "Comment"), method: :delete %>
+              <%= button_to "Reported", report_path(report_id: report, comment_id: comment.id, type: "Comment"), method: :delete, remote: true %>
             <% end %>
           </div>
 
           <% if comment.user.id == current_user.id %>
             <div>
               <%= button_to 'Delete', [comment.post, comment],
-                            method: :delete, class: "button" %>
+                            method: :delete, remote: true, class: "button" %>
             </div>
           <% end %>
 

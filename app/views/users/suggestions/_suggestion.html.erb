@@ -13,7 +13,7 @@
 
       <% if suggestion.user.id == current_user.id %>
         <%= link_to 'Reject', [suggestion.post, suggestion],
-                    method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
+                    method: :delete,remote: true,  class: "button is-danger", data: { confirm: 'Are you sure?' } %>
 
         <%= link_to 'Accept',edit_post_suggestion_path(suggestion.post, suggestion.id) ,
                       class: "button is-danger" %>
