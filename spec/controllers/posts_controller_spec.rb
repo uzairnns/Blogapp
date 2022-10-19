@@ -34,7 +34,6 @@ RSpec.describe Users::PostsController do
     end
   end
 
-
   describe 'GET#new' do
     it 'renders the new template' do
       get :new

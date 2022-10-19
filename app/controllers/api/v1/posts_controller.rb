@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class PostsController < ApiController
@@ -14,6 +16,7 @@ module Api
           format.json
         end
       end
+
       def destroy
         Post.destroy(params[:id])
       end
