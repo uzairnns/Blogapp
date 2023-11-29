@@ -3,24 +3,21 @@
 </h4>
 <p id="notice"><%= notice %></p>
 
-<% @reports.each do |post|%>
-  <%= link_to post do%>
-    <div class='card mb-4' >
+<% @reports.each do |post| %>
+  <%= link_to post do %>
+    <div class='card mb-4'>
       <div class='card-body'>
-        <h5 class='card-title'><%=post.title%></h5>
-        <p><%=post.description%></p>
-        <%end%>
+        <h5 class='card-title'><%= post.title %></h5>
+        <p><%= post.description %></p>
+        <% end %>
         <%= button_to 'Destroy', post,
               method: :delete,
+              remote: true,
               class:'btn btn-primary' %>
       </div>
     </div>
-<%end%>
+<% end %>
 
-
-<%= link_to 'back', posts_url%>
-
+<%= link_to 'back', posts_url %>
 
 <br>
-
-

@@ -3,10 +3,11 @@
 module Users
   class PostsController < UsersController
     respond_to :js, :html, :json
+    after_action :track_action
 
     def index
-      @posts = Post.where(published: 'true')
-      authorize @posts
+      @posts = Post.all.order(:id)
+      flash[:alert] = 'all users posts'
     end
 
     def current_user_posts
@@ -33,29 +34,40 @@ module Users
       end
     end
 
-    def edit; end
+    def edit
+      @post = Post.find_by(id: params[:id])
+    end
 
     def create
       @post = current_user.posts.build(post_params)
 
       if @post.save
+        ActionCable.server.broadcast 'post', {
+          post: PostsController.render(
+            partial: 'post',
+            locals: { post: @post }
+          ).squish
+        }
         redirect_to post_url(@post), notice: 'Post was successfully created.'
       else
-        render :new, status: :unprocessable_entity
+        render :new, status: :unprocessable_entity, notice: 'Post created unsuccessfully'
       end
     end
 
     def update
-      if @post.update(post_params)
+      @post = Post.find_by(id: params[:id])
+      if !@post.nil?
+        @post.update(post_params)
         redirect_to post_url(@post), notice: 'Post was successfully updated.'
       else
-        render :edit, status: :unprocessable_entity
+        file_not_found
       end
     end
 
     def destroy
       @post = Post.find_by(id: params[:id])
-      if @post.destroy
+      if !@post.nil?
+        @post.destroy
         redirect_to posts_url, notice: 'Post was successfully destroyed.'
       else
         file_not_found
@@ -64,7 +76,8 @@ module Users
 
     def like
       @content = Post.find_by(id: params[:id])
-      if @content.liked_by current_user
+      if !@content.nil?
+        @content.liked_by current_user
         redirect_to @content
       else
         file_not_found
@@ -73,11 +86,11 @@ module Users
 
     def dislike
       @content = Post.find_by(id: params[:id])
-      if @content.nil?
-        file_not_found
-      else
+      if !@content.nil?
         @content.disliked_by current_user
         redirect_to @content
+      else
+        file_not_found
       end
     end
 
@@ -85,6 +98,10 @@ module Users
 
     def post_params
       params.require(:post).permit(:title, :description, :content, :cover_picture, :published, :id)
+    end
+
+    def track_action
+      ahoy.track 'Ran action', request.path_parameters
     end
   end
 end

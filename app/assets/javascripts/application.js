@@ -16,18 +16,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require tinymce
-//= user.js
 //= require_tree .
+//= require ahoy
+ahoy.trackAll();
 
-window.onload = function() {
-
-  document.querySelectorAll('.comment-form-display').forEach((el)=>{
-    el.addEventListener('click',(ev)=>{
-      ev.preventDefault();
-      el.nextElementSibling.style ='display: block;'
-    })
-    })
-};
 
 
 

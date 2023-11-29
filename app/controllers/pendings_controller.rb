@@ -2,6 +2,7 @@
 
 class PendingsController < UsersController
   before_action :set_post, only: %i[edit]
+  after_action :track_action
 
   def index
     if current_user.moderator?
@@ -25,5 +26,11 @@ class PendingsController < UsersController
   def set_post
     @post = Post.find_by(id: params[:id])
     file_not_found unless @post
+  end
+
+  private
+
+  def track_action
+    ahoy.track 'Ran action', request.path_parameters
   end
 end

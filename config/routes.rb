@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # root to: redirect('/posts', status: 302)
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount ActionCable.server => '/cable'
   devise_for :users
   get 'home/index'
   root 'home#index'
@@ -26,4 +27,15 @@ Rails.application.routes.draw do
   resources :likings, only: %i[create destroy]
   resources :reports, only: %i[create destroy]
   resources :replies
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :posts, only: %i[index show create update destroy]
+    end
+  end
+  namespace :api, defaults: { format: :json } do
+    namespace :v2 do
+      resources :posts, only: %i[index show create update destroy]
+    end
+  end
 end

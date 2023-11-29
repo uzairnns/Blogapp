@@ -7,30 +7,19 @@ module Users
     before_action :authenticate_user!, only: %i[create destroy]
     before_action :current_user, only: %i[create destroy]
 
-    def index
-      @comments = Comment.all
-    end
-
-    def new
-      @comment = Comment.new
-    end
-
-    def destroy
-      if @comment.destroy
-        redirect_to @post, notice: 'Comment was successfully destroyed.'
-      else
-        file_not_found
-      end
-    end
-
     def create
       @comment = @post.comments.build(comment_params)
       @comment.user = current_user
       if @comment.save
         redirect_to @post, notice: 'post was successfully commented.'
       else
-        redirect_to @post, alert: 'post not commented'
+        redirect_to @post, notice: 'post not commented'
       end
+    end
+
+    def destroy
+      @comment.destroy
+      redirect_to @post, notice: 'Comment was successfully destroyed.'
     end
 
     private
