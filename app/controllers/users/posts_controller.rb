@@ -3,6 +3,7 @@
 module Users
   class PostsController < UsersController
     respond_to :js, :html, :json
+    after_action :track_action
 
     def index
       @posts = Post.all.order(:id)
@@ -97,6 +98,10 @@ module Users
 
     def post_params
       params.require(:post).permit(:title, :description, :content, :cover_picture, :published, :id)
+    end
+
+    def track_action
+      ahoy.track 'Ran action', request.path_parameters
     end
   end
 end

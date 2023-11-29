@@ -9,7 +9,7 @@ ruby '2.7.5'
 gem 'acts_as_votable'
 gem 'bootstrap', '~> 5.1.3'
 gem 'cloudinary'
-gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
+# gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 gem 'rack-cors'
 gem 'rails', '~> 5.2.0'
 # Use postgresql as the database for Active Record
@@ -26,6 +26,11 @@ end
 gem 'image_processing', '~> 1.2'
 gem 'puma', '~> 3.11'
 gem 'rails_admin'
+gem "ahoy_matey"
+gem 'geocoder'
+gem "maxminddb"
+gem 'maxmind-geoip2'
+gem "bullet"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -69,6 +74,7 @@ gem 'therubyracer'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  # gem 'therubyracer'
   gem 'factory_bot_rails'
 end
 
@@ -80,6 +86,7 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
+  gem "rails-erd"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'pry-rails'
   gem 'spring'
